@@ -86,7 +86,7 @@
     <distributionManagement>
         <repository>
             <id>nexus-grayroot</id>
-            <url>https://nexus-backup.grayroot.eu/repository/maven-snapshots/</url>
+            <url>https://nexus.grayroot.eu/repository/maven-snapshots/</url>
         </repository>
     </distributionManagement>
 
