@@ -1,3 +1,11 @@
 spring:
   profiles:
     active: prod
+
+discord:
+  bot:
+    token: ${DISCORD_BOT_TOKEN}
+gitbook:
+  api:
+    url: https://api.gitbook.com/v1/
+    token: ${GITBOOK_API_TOKEN}

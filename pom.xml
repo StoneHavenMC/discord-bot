@@ -32,6 +32,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/net.dv8tion/JDA -->
+        <dependency>
+            <groupId>net.dv8tion</groupId>
+            <artifactId>JDA</artifactId>
+            <version>5.0.0-beta.18</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -70,5 +82,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-grayroot</id>
+            <url>https://nexus-backup.grayroot.eu/repository/maven-snapshots/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
