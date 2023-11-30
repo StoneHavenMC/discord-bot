@@ -30,7 +30,7 @@ public class AskWikiCommand extends ACooldownCommand {
 
     @PostConstruct
     public void post() {
-        jda.updateCommands().addCommands(
+        jda.upsertCommand(
                 Commands.slash("ask", "Poser une question au Wiki StoneHaven")
                         .addOption(OptionType.STRING, "question", "Votre question", true, false)
         ).queue();
@@ -70,7 +70,6 @@ public class AskWikiCommand extends ACooldownCommand {
                 index.getAndIncrement();
             });*/
         } catch (Exception ex) {
-            ex.printStackTrace();
             builder.setColor(Color.RED);
             builder.setDescription("Une erreur est survenue lors de la génération de votre réponse, veuillez ré-essayer une autre question.");
         }
