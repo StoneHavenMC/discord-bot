@@ -16,11 +16,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.OffsetDateTime;
-import java.time.Duration;
 
 @Component
 @RequiredArgsConstructor
@@ -47,9 +42,8 @@ public class PingCommand extends ListenerAdapter {
         EmbedBuilder builder = new EmbedBuilder();
         builder.setTitle("**Ping**");
             builder.setColor(Color.GRAY);
-            Duration latency = Duration.ofDays(e.getJDA().getGatewayPing());
-            String formattedLatency = latency!= null? String.format("%.2fms", latency.toMillis()) : "?,??ms";
-            builder.setDescription("Le ping du bot est actuellement de " + formattedLatency);
+            long latency = e.getJDA().getGatewayPing();
+            builder.setDescription("Le ping du bot est actuellement de " + latency + "ms");
         e.getHook().sendMessageEmbeds(builder.build()).queue();
     }
 
