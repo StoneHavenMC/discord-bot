@@ -10,7 +10,6 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
 import java.awt.*;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -40,8 +39,8 @@ public class PingCommand extends ListenerAdapter {
         EmbedBuilder builder = new EmbedBuilder();
         builder.setTitle("**Ping**");
         builder.setColor(Color.GRAY);
-        long ping = Timestamp.from(Instant.now()).compareTo(Timestamp.valueOf(e.getTimeCreated().toLocalDateTime()));
-        builder.setDescription("Le ping du bot est actuellement de " + ping + " ms");
+        long latency = e.getJDA().getGatewayPing();
+        builder.setDescription("Le ping du bot est actuellement de " + latency + "ms");
         e.getHook().sendMessageEmbeds(builder.build()).queue();
     }
 
