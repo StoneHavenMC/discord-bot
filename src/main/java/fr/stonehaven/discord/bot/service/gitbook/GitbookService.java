@@ -37,6 +37,8 @@ public class GitbookService implements IGitbookService {
         try {
             APIGitbookAnswer response = restClient.exchange(gitbookAPIURL + "/search/ask", HttpMethod.POST, request, APIGitbookAnswer.class).getBody();
             assert response != null;
+            assert response.getAnswer() != null;
+            assert response.getAnswer().getText() != null;
             return response.getAnswer();
         } catch (Exception e) {
             e.printStackTrace();

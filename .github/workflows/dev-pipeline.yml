@@ -36,11 +36,8 @@ jobs:
         NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
         NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag grayr0ot/sh-discord-bot:dev
-      
-    - name: Log in to Docker Hub
-      run: docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_TOKEN }}
-
-    - name: Push the Docker image to Docker Hub
-      run: docker push grayr0ot/sh-discord-bot:dev
+    - name: Push the Docker image to Github registry
+      run: |
+        docker login --username grayr0ot --password ${{secrets.GHCR_PASSWORD}} ghcr.io
+        docker build . --tag ghcr.io/grayr0ot/sh-discord-bot:dev
+        docker push ghcr.io/grayr0ot/sh-discord-bot:dev
