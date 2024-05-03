@@ -1,26 +1,18 @@
 package fr.stonehaven.discord.bot.command;
 
-import fr.stonehaven.discord.bot.dto.api.gitbook.search.GitbookAnswer;
-import fr.stonehaven.discord.bot.service.gitbook.IGitbookService;
 import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
 import java.awt.*;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.time.OffsetDateTime;
-import java.time.Duration;
 
 @Component
 @RequiredArgsConstructor
@@ -46,10 +38,9 @@ public class PingCommand extends ListenerAdapter {
 
         EmbedBuilder builder = new EmbedBuilder();
         builder.setTitle("**Ping**");
-            builder.setColor(Color.GRAY);
-            Duration latency = Duration.ofDays(e.getJDA().getGatewayPing());
-            String formattedLatency = latency!= null? String.format("%.2fms", latency.toMillis()) : "?,??ms";
-            builder.setDescription("Le ping du bot est actuellement de " + formattedLatency);
+        builder.setColor(Color.GRAY);
+        long latency = e.getJDA().getGatewayPing();
+        builder.setDescription("Le ping du bot est actuellement de " + latency + "ms");
         e.getHook().sendMessageEmbeds(builder.build()).queue();
     }
 
