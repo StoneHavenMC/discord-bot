@@ -46,8 +46,9 @@ public class PingCommand extends ListenerAdapter {
         EmbedBuilder builder = new EmbedBuilder();
         builder.setTitle("**Ping**");
             builder.setColor(Color.GRAY);
-            long ping = Timestamp.from(Instant.now()).compareTo(Timestamp.valueOf(e.getTimeCreated().toLocalDateTime()));
-            builder.setDescription("Le ping du bot est actuellement de " + ping + " ms");
+            Duration latency = event.getJDA().getGatewayLatency();
+            String formattedLatency = latency!= null? String.format("%.2fms", latency.toMillis()) : "?,??ms";
+            builder.setDescription("Le ping du bot est actuellement de " + formattedLatency);
         e.getHook().sendMessageEmbeds(builder.build()).queue();
     }
 
