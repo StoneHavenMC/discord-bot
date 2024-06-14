@@ -9,3 +9,12 @@ gitbook:
   api:
     url: https://api.gitbook.com/v1/
     token: ${GITBOOK_API_TOKEN}
+
+api:
+  mojang:
+    base-url: https://api.mojang.com
+  stonehaven:
+    farmrun-item-service:
+      base-url: https://api.stonehaven.fr/farmrun/item
+    farmrun-player-service:
+      base-url: https://api.stonehaven.fr/farmrun/player
